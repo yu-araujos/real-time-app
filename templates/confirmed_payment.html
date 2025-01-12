@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../static/css/style.css" />
+
+    <title>Payment</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div id="qr-code">
+          <img src="../static/template_img/qrcode.png" alt="QR Code" />
+
+
+          <img
+            id="confirmed-icon"
+            src="../static/template_img/check.svg"
+            alt="Payment confirmed icon"
+          />
+          
+        </div>
+
+        <aside>
+          <h1 id="title-text" style="color: #56A92F !important;">Order confirmed!</h1>
+          <p id="description">
+            Everything is fine with your order. The Pix payment was confirmed by your bank.
+          </p>
+
+          <div id="purchase-value">
+            <img src="../static/template_img/tag.svg" alt="tag icon" />
+            <span>Purchase of <strong id="amount">287,90</strong>€</span>
+          </div>
+        </aside>
+      </header>
+
+      <footer>
+        <div id="expiration-time">
+          <img src="../static/template_img/currency.svg" alt="Coin icon" />
+          <span>We have received confirmation of payment for your order via Pix!</span>
+        </div>
+
+
+        <div id="order">
+          <small>Your order number is</small>
+          <div>
+            <img src="../static/template_img/basket.svg" alt="Order icon" />
+            <span>527485022</span>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
