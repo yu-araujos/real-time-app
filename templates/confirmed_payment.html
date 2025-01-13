@@ -38,7 +38,7 @@
 
           <div id="purchase-value">
             <img src="../static/template_img/tag.svg" alt="tag icon" />
-            <span>Purchase of <strong id="amount">287,90</strong>€</span>
+            <span>Purchase of <strong id="amount">{{ value }}</strong> €</span>
           </div>
         </aside>
       </header>
@@ -54,7 +54,7 @@
           <small>Your order number is</small>
           <div>
             <img src="../static/template_img/basket.svg" alt="Order icon" />
-            <span>527485022</span>
+            <span>{{ payment_id }}</span>
           </div>
         </div>
       </footer>
