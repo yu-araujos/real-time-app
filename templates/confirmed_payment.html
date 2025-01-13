@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' )}}"/>
 
     <title>Payment</title>
   </head>
@@ -19,12 +19,10 @@
     <main>
       <header>
         <div id="qr-code">
-          <img src="../static/template_img/qrcode.png" alt="QR Code" />
-
-
+          <img src="{{host}}/payments/pix/qr_code/{{qr_code}}" alt="QR Code" />
           <img
             id="confirmed-icon"
-            src="../static/template_img/check.svg"
+            src="{{ url_for('static', filename='template_img/check.svg' )}}"
             alt="Payment confirmed icon"
           />
           
@@ -37,7 +35,7 @@
           </p>
 
           <div id="purchase-value">
-            <img src="../static/template_img/tag.svg" alt="tag icon" />
+            <img src="{{ url_for('static', filename='template_img/tag.svg' )}}" alt="Tag icon" />
             <span>Purchase of <strong id="amount">{{ value }}</strong> €</span>
           </div>
         </aside>
@@ -45,7 +43,7 @@
 
       <footer>
         <div id="expiration-time">
-          <img src="../static/template_img/currency.svg" alt="Coin icon" />
+          <img src="{{ url_for('static', filename='template_img/basket.svg' )}}" alt="Order icon" />
           <span>We have received confirmation of payment for your order via Pix!</span>
         </div>
 
@@ -53,7 +51,7 @@
         <div id="order">
           <small>Your order number is</small>
           <div>
-            <img src="../static/template_img/basket.svg" alt="Order icon" />
+            <img src="{{ url_for('static', filename='template_img/basket.svg' )}}" alt="Order icon" />
             <span>{{ payment_id }}</span>
           </div>
         </div>

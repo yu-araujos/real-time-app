@@ -47,14 +47,40 @@ def get_image(file_name):
 
 
 @app.route('/payments/pix/confirmation', methods=['POST'])
-def confirmation_pix():
+def pix_confirmation():
+  data = request.get_json()
+  
+  if 'bank_payment_id' not in data and "value" not in data:
+    return jsonify({"message": "invalid payment data"}), 400
+  
+  payment = Payment.query.filter_by(bank_payment_id=data.get('bank_payment_id')).first()
+  
+  if not payment or payment.paid:
+    return jsonify({"message": "payment not found"}), 404
+  
+  if data.get('value') != payment.value:
+    return jsonify({"message": "invalid value"}), 400
+  
+  payment.paid = True
+  db.session.commit()
+  socketio.emit(f'payment-confirmed-{payment.id}')
+  
   return jsonify({"message": "The payment has been confirmed"})
 
 
 @app.route('/payments/pix/<int:payment_id>', methods=['GET'])
 def payment_pix_page(payment_id):
   payment = Payment.query.get(payment_id)
+  
+  if not payment:
+    return render_template('404.html')
 
+  if payment.paid:
+    return render_template('confirmed_payment.html', 
+                           payment_id=payment.id,
+                           value=payment.value,
+                           qr_code=payment.qr_code)
+  
   return render_template('payment.html', 
                          payment_id=payment.id, 
                          value=payment.value, 
@@ -64,6 +90,10 @@ def payment_pix_page(payment_id):
 @socketio.on('connect')
 def handle_connect():
   print('connected')
+
+@socketio.on('disconnect')
+def handle_disconnect():
+  print('disconnected')
 
 if __name__ == '__main__':
   socketio.run(app, debug=True)

@@ -65,6 +65,10 @@
       socket.on('connect', function() {
         console.log('Connected to server');
       });
+      socket.on('payment-confirmed-{{payment_id}}', function() {
+        console.log('Payment confirmed');
+        location.reload();
+      });
     </script>
   </body>
 </html>
