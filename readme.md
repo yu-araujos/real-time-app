@@ -12,3 +12,4 @@ The primary goal of this project is to build a real-time payment API from scratc
 - **Python**: Core programming language for building the API.
 - **Flask**: Framework for creating the API endpoints.
 - **WebSockets**: For enabling real-time bidirectional communication.
+- **PyTest**: For unit tests.
